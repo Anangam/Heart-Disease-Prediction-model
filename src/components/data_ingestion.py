@@ -6,7 +6,11 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 from src.components.data_transformation import DataTransformer
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
+
 @dataclass
+
 
 class DataIngestionConfig:
     train_data_path: str=os.path.join('artifacts','train.csv')
@@ -56,6 +60,8 @@ if __name__ == "__main__":
         data_transformation = DataTransformer()
         train_arr, test_arr, preprocessor_path = data_transformation.initiate_data_transformation(train_data, test_data)
         print(f"Step 2 Complete. Preprocessor saved at: {preprocessor_path}")
+        modeltrainer=ModelTrainer()
+        print(modeltrainer.initiate_model_trainer(train_arr,test_arr))
         
     except Exception as e:
         print(f"PROCESS FAILED: {e}")
