@@ -1,7 +1,6 @@
 [project]
-name = "app"
+name = "path0"
 version = "0.1.0"
-description = "Your project description"
 requires-python = ">=3.9"
 dependencies = [
     "numpy",
