@@ -1,0 +1,19 @@
+[project]
+name = "path0"
+version = "0.1.0"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy",
+    "pillow",
+    "scikit-learn",
+    "matplotlib",
+    "plotly",
+    "catboost",
+    "pandas",
+    "scipy",
+    "xgboost",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
