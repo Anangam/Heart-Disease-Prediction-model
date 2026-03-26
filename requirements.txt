@@ -7,4 +7,5 @@ xgboost
 scikit-learn
 gunicorn
 flask
+joblib
 -e .
