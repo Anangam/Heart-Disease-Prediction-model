@@ -2,11 +2,12 @@ import os
 import sys
 from flask import Flask, render_template, request
 
-# 1. CRITICAL: Root folder ko path mein add karo taaki 'src' import ho sake
-current_dir = os.path.dirname(os.path.abspath(__file__))
-root_dir = os.path.dirname(current_dir)
-sys.path.append(root_dir)
+# Root mein hai toh simple paths chalenge
+app = Flask(__name__, template_folder='templates')
 
+# Model path update
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, 'artifacts', 'model.pkl')
 # Ab imports kaam karenge
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 
