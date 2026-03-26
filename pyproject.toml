@@ -15,6 +15,9 @@ dependencies = [
     "xgboost",
 ]
 
+[project.scripts]
+app = "app:app"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
