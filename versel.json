@@ -1,0 +1,4 @@
+{
+  "buildCommand": "uv sync",
+  "installCommand": "uv sync"
+}

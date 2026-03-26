@@ -2,20 +2,13 @@ import os
 import sys
 from flask import Flask, render_template, request
 
-# Root mein hai toh simple paths chalenge
-app = Flask(__name__, template_folder='templates')
-
-# Model path update
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, 'artifacts', 'model.pkl')
-# Ab imports kaam karenge
-from src.pipeline.predict_pipeline import CustomData, PredictPipeline
+app = Flask(__name__, template_folder=os.path.join(BASE_DIR, 'templates'))
 
-app = Flask(__name__, template_folder='../templates')
+from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 
 @app.route('/')
 def index():
-    # Aapka main landing page
     return render_template('index.html')
 
 @app.route('/predictdata', methods=['GET', 'POST'])
@@ -23,7 +16,6 @@ def predict_datapoint():
     if request.method == 'GET':
         return render_template('home.html')
     else:
-        # Form se data uthao (13 features for Heart Disease)
         data = CustomData(
             age=int(request.form.get('age')),
             sex=int(request.form.get('sex')),
@@ -44,7 +36,7 @@ def predict_datapoint():
         predict_pipeline = PredictPipeline()
         results = predict_pipeline.predict(pred_df)
         
-        # Result ko home.html pe dikhao
         return render_template('home.html', results=results[0])
 
-# Vercel doesn't need app.run()
+if __name__ == '__main__':
+    app.run(debug=False)
